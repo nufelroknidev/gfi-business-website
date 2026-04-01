@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% if post.meta_title %}{{ post.meta_title }}{% else %}{{ post.title }} — {% trans "GFI" %}{% endif %}{% endblock %}
+{% block meta_description %}{% if post.meta_description %}{{ post.meta_description }}{% else %}{{ post.content|truncatewords:25 }}{% endif %}{% endblock %}
+
+{% block content %}
+
+<section class="page-header py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-3">
+                <li class="breadcrumb-item"><a href="{% url 'news:list' %}">{% trans "News" %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+            </ol>
+        </nav>
+        <p class="news-detail__date mb-1">{{ post.published_date|date:"DATE_FORMAT" }}</p>
+        <h1 class="news-detail__title mb-0">{{ post.title }}</h1>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row gy-5">
+            <div class="col-md-5">
+                {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid rounded">
+                {% else %}
+                <div class="img-placeholder">
+                    <span>{% trans "No image available" %}</span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-7">
+                <div class="news-detail__content">
+                    {{ post.content|linebreaks }}
+                </div>
+                <div class="mt-5">
+                    <a href="{% url 'news:list' %}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>{% trans "Back to News" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
