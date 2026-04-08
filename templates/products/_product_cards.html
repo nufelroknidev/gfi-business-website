@@ -2,13 +2,20 @@
 
 {% if not page.object_list %}
 <div class="col-12">
-    <p class="text-muted mb-0">
+    <div class="product-empty-state">
+        <i class="bi bi-search product-empty-state__icon"></i>
         {% if q %}
-        {% blocktrans with term=q %}No products found matching "{{ term }}".{% endblocktrans %}
+        <p class="product-empty-state__title">
+            {% blocktrans with term=q %}No products or categories match "{{ term }}".{% endblocktrans %}
+        </p>
+        <p class="product-empty-state__hint">
+            {% trans "Try a different keyword, a CAS number, or an E-number." %}
+        </p>
         {% else %}
-        {% trans "No products match the current filters." %}
+        <p class="product-empty-state__title">{% trans "No products match the selected filters." %}</p>
+        <p class="product-empty-state__hint">{% trans "Try removing one or more filters." %}</p>
         {% endif %}
-    </p>
+    </div>
 </div>
 {% endif %}
 

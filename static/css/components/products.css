@@ -15,6 +15,38 @@
     pointer-events: none;
 }
 
+/* ── Empty search state ───────────────────────────────────────────────────── */
+
+.product-empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background-color: #fff;
+    border: 1px dashed var(--gfi-border);
+    border-radius: var(--gfi-radius);
+    width: 100%;
+}
+
+.product-empty-state__icon {
+    font-size: 2.5rem;
+    color: var(--gfi-slate);
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.product-empty-state__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gfi-text);
+    margin-bottom: 0.4rem;
+}
+
+.product-empty-state__hint {
+    font-size: 0.875rem;
+    color: var(--gfi-slate);
+    margin: 0;
+}
+
 /* ── Filter panel — sidebar ───────────────────────────────────────────────── */
 
 .product-filter-panel {
