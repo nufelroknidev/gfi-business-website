@@ -92,8 +92,8 @@
                 <div class="input-group">
                     <input type="text" name="q" value="{{ q }}" class="form-control"
                            placeholder="{% trans 'Search by name, CAS number, E-number…' %}">
-                    <button class="btn btn-gfi-primary" type="submit">
-                        <i class="bi bi-search"></i>
+                    <button class="btn btn-gfi-primary" type="submit" aria-label="{% trans 'Search products' %}">
+                        <i class="bi bi-search" aria-hidden="true"></i>
                     </button>
                     {% if q %}
                     <a href="{% if category %}{% url 'products:category' category.slug %}{% else %}{% url 'products:list' %}{% endif %}"
