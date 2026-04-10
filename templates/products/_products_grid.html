@@ -4,6 +4,15 @@
 
         <!-- ── Sidebar ──────────────────────────────────────────────────── -->
         <div class="col-lg-3 col-md-4">
+            <button class="d-md-none btn btn-outline-secondary w-100 mb-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#filterCollapse"
+                    aria-expanded="false"
+                    aria-controls="filterCollapse">
+                <i class="bi bi-funnel me-1"></i>{% trans "Filters" %}
+            </button>
+            <div id="filterCollapse" class="collapse d-md-block">
             <div class="product-filter-panel">
 
                 <!-- Categories -->
@@ -83,6 +92,7 @@
                 {% endif %}
 
             </div>
+            </div><!-- /#filterCollapse -->
         </div>
 
         <!-- ── Main content ─────────────────────────────────────────────── -->
