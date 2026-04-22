@@ -37,5 +37,7 @@ if settings.DEBUG:
     urlpatterns = [path('__debug__/', include(debug_toolbar.urls))] + urlpatterns
     urlpatterns += [path('__reload__/', include('django_browser_reload.urls'))]
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [path('__test-400__/', lambda r: _render(r, '400.html'), name='test_400')]
+    urlpatterns += [path('__test-403__/', lambda r: _render(r, '403.html'), name='test_403')]
     urlpatterns += [path('__test-404__/', lambda r: _render(r, '404.html'), name='test_404')]
     urlpatterns += [path('__test-500__/', lambda r: _render(r, '500.html'), name='test_500')]
