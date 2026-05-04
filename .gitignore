@@ -63,8 +63,11 @@ coverage.xml
 # Static files collected
 staticfiles/
 
-# Product scraper — raw output and local backups (not for version control)
+# Product scraper — raw output, scripts, and local backups (not for version control)
 scrape_output.json
+scrape_*.py
+clean_scraped_*.py
+clean_output.json
 products_backup_*.json
 
 # Jupyter
