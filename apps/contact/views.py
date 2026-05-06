@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
+from django_ratelimit.decorators import ratelimit
 
 from apps.products.models import Product
 from .forms import InquiryForm
@@ -11,6 +12,7 @@ from .forms import InquiryForm
 logger = logging.getLogger(__name__)
 
 
+@ratelimit(key='ip', rate='10/h', method='POST', block=True)
 def inquiry(request):
     preselected_product = None
     if request.method == 'POST':

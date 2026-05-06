@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Too Many Requests — GFI{% endblock %}
+{% block meta_description %}You have submitted too many requests. Please wait before trying again.{% endblock %}
+
+{% block content %}
+
+<section class="error-page">
+
+    <div class="error-page__bg-pattern" aria-hidden="true"></div>
+
+    <div class="container error-page__container">
+
+        <p class="error-page__label">Error 429</p>
+
+        <div class="error-page__code-wrap" aria-hidden="true">
+            <span class="error-page__code">429</span>
+        </div>
+
+        <div class="error-page__divider" aria-hidden="true"></div>
+
+        <div class="error-page__body">
+            <h1 class="error-page__title">Too Many Requests</h1>
+            <p class="error-page__subtitle">
+                You have submitted too many enquiries in a short period.<br>
+                Please wait a while before submitting another request.
+            </p>
+
+            <div class="error-page__actions">
+                <a href="{% url 'products:list' %}" class="error-action-card">
+                    <div class="error-action-card__icon-wrap">
+                        <i class="bi bi-box-seam error-action-card__icon"></i>
+                    </div>
+                    <span class="error-action-card__label">Browse Products</span>
+                    <span class="error-action-card__hint">Our full catalogue of food additives</span>
+                </a>
+                <a href="{% url 'pages:home' %}" class="error-action-card">
+                    <div class="error-action-card__icon-wrap">
+                        <i class="bi bi-house-fill error-action-card__icon"></i>
+                    </div>
+                    <span class="error-action-card__label">Back to Home</span>
+                    <span class="error-action-card__hint">Return to the GFI homepage</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

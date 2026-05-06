@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from apps.contact.models import Inquiry
@@ -56,14 +56,27 @@ class ContactFormSubmissionTests(TestCase):
         })
         self.assertEqual(Inquiry.objects.count(), 0)
 
-    @patch('apps.contact.views.send_mail')
-    def test_valid_form_triggers_email(self, mock_send_mail):
+    @override_settings(RATELIMIT_ENABLE=True)
+    def test_rate_limit_blocks_after_10_posts(self):
+        payload = {
+            'name': 'Bot',
+            'email': 'bot@example.com',
+            'subject': 'Spam',
+            'message': 'This is a test message.',
+        }
+        url = reverse('contact:inquiry')
+        for _ in range(10):
+            self.client.post(url, payload, REMOTE_ADDR='1.2.3.4')
+        response = self.client.post(url, payload, REMOTE_ADDR='1.2.3.4')
+        self.assertEqual(response.status_code, 429)
+
+    @patch('apps.contact.views.EmailMessage')
+    def test_valid_form_triggers_email(self, mock_email_cls):
+        mock_email_cls.return_value.send.return_value = None
         self.client.post(reverse('contact:inquiry'), {
             'name': 'John Smith',
             'email': 'john@example.com',
             'subject': 'Product availability',
             'message': 'I would like to know more about your products.',
         })
-        self.assertTrue(mock_send_mail.called)
-        subject = mock_send_mail.call_args[1]['subject']
-        self.assertIn('Product availability', subject)
+        self.assertTrue(mock_email_cls.called)

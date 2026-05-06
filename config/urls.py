@@ -5,6 +5,8 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.generic import RedirectView, TemplateView
 
+from django_ratelimit.exceptions import Ratelimited
+
 from apps.pages.sitemaps import NewsSitemap, ProductSitemap, StaticViewSitemap
 
 sitemaps = {
@@ -31,6 +33,11 @@ urlpatterns += [
     path('news/', include('apps.news.urls')),
     path('contact/', include('apps.contact.urls')),
 ]
+
+def handler429(request, exception=None):
+    from django.shortcuts import render as _render
+    return _render(request, '429.html', status=429)
+
 
 if settings.DEBUG:
     from django.shortcuts import render as _render
