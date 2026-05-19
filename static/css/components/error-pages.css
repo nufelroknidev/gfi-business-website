@@ -42,6 +42,27 @@
     text-align: center;
 }
 
+/* "Error" pill label — tells the user this is an error before the number */
+.error-page__label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gfi-green);
+    background: var(--gfi-green-faint);
+    border: 1px solid var(--gfi-green-light);
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+}
+
+.error-page__label--amber {
+    color: #92600a;
+    background: #fff8e1;
+    border-color: #f5d67a;
+}
+
 /* The giant 404 numeral */
 .error-page__code-wrap {
     line-height: 1;

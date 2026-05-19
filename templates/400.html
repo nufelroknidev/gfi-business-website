@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Server Error — GFI{% endblock %}
-{% block meta_description %}An unexpected error occurred on our end. Return to the GFI homepage or contact our team directly.{% endblock %}
+{% block title %}Bad Request — GFI{% endblock %}
+{% block meta_description %}The request could not be understood by the server. Return to the GFI homepage or browse our product catalogue.{% endblock %}
 
 {% block content %}
 
@@ -12,19 +12,19 @@
 
     <div class="container error-page__container">
 
-        <p class="error-page__label error-page__label--amber">Error 500</p>
+        <p class="error-page__label">Error 400</p>
 
         <div class="error-page__code-wrap" aria-hidden="true">
-            <span class="error-page__code error-page__code--500">500</span>
+            <span class="error-page__code">400</span>
         </div>
 
         <div class="error-page__divider" aria-hidden="true"></div>
 
         <div class="error-page__body">
-            <h1 class="error-page__title">Something Went Wrong</h1>
+            <h1 class="error-page__title">Bad Request</h1>
             <p class="error-page__subtitle">
-                An unexpected error occurred on our end.<br>
-                Here's what you can do in the meantime:
+                The server couldn't understand this request — it may be malformed or missing required data.<br>
+                Here's where you can go instead:
             </p>
 
             <div class="error-page__actions">

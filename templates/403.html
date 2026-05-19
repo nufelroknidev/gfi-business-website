@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Server Error — GFI{% endblock %}
-{% block meta_description %}An unexpected error occurred on our end. Return to the GFI homepage or contact our team directly.{% endblock %}
+{% block title %}Access Denied — GFI{% endblock %}
+{% block meta_description %}You don't have permission to view this page. Return to the GFI homepage or contact our team to request access.{% endblock %}
 
 {% block content %}
 
@@ -12,19 +12,19 @@
 
     <div class="container error-page__container">
 
-        <p class="error-page__label error-page__label--amber">Error 500</p>
+        <p class="error-page__label">Error 403</p>
 
         <div class="error-page__code-wrap" aria-hidden="true">
-            <span class="error-page__code error-page__code--500">500</span>
+            <span class="error-page__code">403</span>
         </div>
 
         <div class="error-page__divider" aria-hidden="true"></div>
 
         <div class="error-page__body">
-            <h1 class="error-page__title">Something Went Wrong</h1>
+            <h1 class="error-page__title">Access Denied</h1>
             <p class="error-page__subtitle">
-                An unexpected error occurred on our end.<br>
-                Here's what you can do in the meantime:
+                You don't have permission to view this page.<br>
+                Here's where you can go instead:
             </p>
 
             <div class="error-page__actions">
@@ -39,8 +39,8 @@
                     <div class="error-action-card__icon-wrap">
                         <i class="bi bi-envelope-fill error-action-card__icon"></i>
                     </div>
-                    <span class="error-action-card__label">Contact Us</span>
-                    <span class="error-action-card__hint">Let our team know what happened</span>
+                    <span class="error-action-card__label">Request Access</span>
+                    <span class="error-action-card__hint">Contact our team for assistance</span>
                 </a>
                 <a href="{% url 'products:list' %}" class="error-action-card">
                     <div class="error-action-card__icon-wrap">
