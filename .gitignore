@@ -63,6 +63,9 @@ coverage.xml
 # Static files collected
 staticfiles/
 
+# Backups
+.backups/
+
 # Product scraper — raw output, scripts, and local backups (not for version control)
 scrape_output.json
 scrape_*.py
